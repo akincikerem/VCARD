@@ -1,55 +1,181 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VS Card</title>
+    <title>Contact Card</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 40px;
-            background-color: #f8f9fa;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .card {
-            max-width: 400px;
-            margin: auto;
-            background: white;
-            padding: 20px;
+            background-color: #ffffff;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            overflow: hidden;
+            font-size: 14px;
         }
-        img {
-            width: 100px;
+        .card-header {
+            background-color: #4A90E2;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        .card-header img {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
         }
-        h2 {
+        .card-header h2 {
             margin: 10px 0;
+            font-size: 18px;
         }
-        p {
-            margin: 5px 0;
-            font-size: 16px;
+        .card-header p {
+            margin: 0;
+            font-size: 12px;
+			padding: 5px;
         }
-        a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 15px;
+        .card-header .buttons {
             margin-top: 10px;
-            background-color: #28a745;
-            color: white;
-            border-radius: 5px;
         }
+        .card-header .buttons a {
+            text-decoration: none;
+            background-color: #ffffff;
+            color: #4A90E2;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .card-content {
+            padding: 20px;
+            border-top: 1px solid #f0f0f0;
+        }
+        .card-content p {
+            margin: 10px 0;
+            font-size: 14px;
+        }
+        .card-content a {
+            color: #4A90E2;
+            text-decoration: none;
+        }
+        .save-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .save-btn button {
+            background-color: #4A90E2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .save-btn button:hover {
+            background-color: #357ab7;
+        }
+		.address {
+			font-size: 10px;  
+			
+		}
     </style>
 </head>
 <body>
 
     <div class="card">
-        <img src="profile.jpg" alt="Profil Fotoğrafı">
-        <h2>Adınız Soyadınız</h2>
-        <p><strong>Meslek:</strong> Yazılım Mühendisi</p>
-        <p><strong>Şirket:</strong> ABC Teknoloji</p>
-        <p><strong>E-posta:</strong> <a href="mailto:ornek@mail.com">ornek@mail.com
+        <div class="card-header">
+			<img id="profile-pic" src="KRM_PHOTO.jpg" alt="Profile Picture">
+            <h2 id="full-name">full-name</h2>
+            <p id="position">position</p>
+			<p id="company">company</p>
+			<p><span id="address" class="address">address</span></p>
+            
+			
+            <div class="buttons">
+                <a id="phone-link" href="#">Phone</a>
+                <a id="email-link" href="#">Email</a>
+                <a id="Linkedin-link" href="#" target="_blank">Linkedi</a>
+            </div>
+        </div>
+        <div class="card-content">            
+            <p><strong>Email:</strong> <span id="email">Email</span></p>
+			<p><strong>Mobile Phone:</strong> <span id="mobile-phone">mobile-phone</span></p>
+			<p><strong>About:</strong> <span id="personal-description">personal-description</span></p>
+        </div>
+        <div class="save-btn">
+            <button id="saveContact">Save to contacts</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript değişkenleri
+		const profilePicUrl = "KRM_PHOTO.jpg"; 
+        const fullName = "KEREM AKINCI";
+        const position = "MAINTENANCE PLANNING SENIOR ENGINEER";
+        const companyName = "SUNEXPRESS AIRLINES";
+		const address = "Yenigöl Mah. Nergiz Sok.No: 84 , ANTALYA, Muratpasa 07230 TURKIYE";
+        const phone = "+90 507 9950500";
+        const email = "kerem.akinci@sunexpress.com";
+        const Linkedin_link = "https://www.linkedin.com/in/kerem-akinci-05a87211b/?originalSubdomain=tr";
+		
+		const personalDesc = "Responsible for Base Maintenance Activities, Aircraft Maintenance Program, and AMOS Engineering Modules";
+        
+        
+		// ###############################################################################
+		
+        // HTML öğelerine değişken değerlerini atama
+		document.getElementById("profile-pic").src = profilePicUrl;
+        document.getElementById("full-name").innerText = fullName;
+        document.getElementById("position").innerText = `${position}`;
+		document.getElementById("company").innerText = `${companyName}`;
+		document.getElementById("address").innerText = `${address}`;        
+        document.getElementById("phone-link").href = `tel:${phone}`;
+        document.getElementById("phone-link").innerText = `Phone`;
+        document.getElementById("email-link").href = `mailto:${email}`;
+        document.getElementById("email-link").innerText = `Email`;
+        document.getElementById("Linkedin-link").href = Linkedin_link;
+        document.getElementById("Linkedin-link").innerText = "Linkedin";
+
+        document.getElementById("email").innerText = email;        
+		document.getElementById("mobile-phone").innerText = phone; 
+		document.getElementById("personal-description").innerText = personalDesc;	
+
+		
+        // Save contact fonksiyonu
+		document.getElementById('saveContact').addEventListener('click', function() {
+		const vCardData = `
+		BEGIN:VCARD
+		VERSION:3.0
+		FN:${fullName}
+		TEL:${phone}
+		EMAIL:${email}
+		ORG:${company}
+		TITLE:${position}
+		NOTE:${personalDesc} 
+		END:VCARD
+		`;
+
+		// vCard dosyasını indirilebilir hale getirme
+		const blob = new Blob([vCardData], { type: 'text/vcard' });
+		const url = URL.createObjectURL(blob);
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = 'contact.vcf';  // vCard dosya adı
+		link.click();
+		URL.revokeObjectURL(url);  // Belleği temizle
+});
+    </script>
+
+</body>
+</html>
