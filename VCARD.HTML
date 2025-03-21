@@ -3,178 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Card</title>
+    <title>Contact KEREM AKINCI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --background: #f8f9fa;
+            --text-dark: #2b2d42;
+            --text-light: #8d99ae;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            color: var(--text-dark);
         }
+
         .card {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 320px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 340px;
             overflow: hidden;
-            font-size: 14px;
+            transition: transform 0.3s ease;
         }
+
         .card-header {
-            background-color: #4A90E2;
-            padding: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 30px 20px;
             text-align: center;
             color: white;
+            position: relative;
         }
-        .card-header img {
+
+        #profile-pic {
             width: 120px;
             height: 120px;
             border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            object-fit: cover;
+            margin-bottom: 20px;
         }
-        .card-header h2 {
-            margin: 10px 0;
-            font-size: 18px;
+
+        #full-name {
+            margin: 10px 0 5px;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
-        .card-header p {
-            margin: 0;
-            font-size: 12px;
-			padding: 5px;
+
+        #position {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 8px;
         }
-        .card-header .buttons {
-            margin-top: 10px;
+
+        #company {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 15px;
         }
-        .card-header .buttons a {
-            text-decoration: none;
-            background-color: #ffffff;
-            color: #4A90E2;
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 12px;
-            display: inline-block;
-        }
-        .card-content {
-            padding: 20px;
-            border-top: 1px solid #f0f0f0;
-        }
-        .card-content p {
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        .card-content a {
-            color: #4A90E2;
-            text-decoration: none;
-        }
-        .save-btn {
+
+        .buttons {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            gap: 12px;
+            margin-top: 15px;
         }
-        .save-btn button {
-            background-color: #4A90E2;
+
+        .buttons a {
+            display: flex;
+            align-items: center;
+            padding: 8px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
             color: white;
-            padding: 10px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .buttons a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content p {
+            display: flex;
+            align-items: center;
+            margin: 0 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .card-content strong {
+            min-width: 90px;
+            margin-right: 10px;
+        }
+
+        #address {
+            font-size: 0.75rem;
+            opacity: 0.8;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        .save-btn {
+            padding: 0 25px 25px;
+        }
+
+        #saveContact {
+            width: 100%;
+            padding: 12px;
             border: none;
-            border-radius: 30px;
-            font-size: 14px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 500;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .save-btn button:hover {
-            background-color: #357ab7;
+
+        #saveContact:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
         }
-		.address {
-			font-size: 10px;  
-			
-		}
     </style>
 </head>
 <body>
 
     <div class="card">
         <div class="card-header">
-			<img id="profile-pic" src="KRM_PHOTO.jpg" alt="Profile Picture">
+            <img id="profile-pic" src="KRM_PHOTO.jpg" alt="Profile Picture">
             <h2 id="full-name">full-name</h2>
             <p id="position">position</p>
-			<p id="company">company</p>
-			<p><span id="address" class="address">address</span></p>
-            
-			
+            <p id="company">company</p>
             <div class="buttons">
-                <a id="phone-link" href="#">Phone</a>
-                <a id="email-link" href="#">Email</a>
-                <a id="Linkedin-link" href="#" target="_blank">Linkedi</a>
+                <a id="phone-link" href="#">
+                    <i class="fas fa-phone"></i>
+                </a>
+                <a id="email-link" href="#">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a id="Linkedin-link" href="#" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
             </div>
         </div>
-        <div class="card-content">            
-            <p><strong>Email:</strong> <span id="email">Email</span></p>
-			<p><strong>Mobile Phone:</strong> <span id="mobile-phone">mobile-phone</span></p>
-			<p><strong>About:</strong> <span id="personal-description">personal-description</span></p>
+        
+        <div class="card-content">
+            <p><strong><i class="fas fa-envelope"></i> Email:</strong> <span id="email">Email</span></p>
+            <p><strong><i class="fas fa-mobile-alt"></i> Mobile:</strong> <span id="mobile-phone">mobile-phone</span></p>
+            <p><strong><i class="fas fa-info-circle"></i> About:</strong> <span id="personal-description">personal-description</span></p>
+            <p id="address" class="address"></p>
         </div>
+
         <div class="save-btn">
-            <button id="saveContact">Save to contacts</button>
+            <button id="saveContact">
+                <i class="fas fa-download"></i> Save to Contacts
+            </button>
         </div>
     </div>
 
     <script>
-        // JavaScript değişkenleri
+        // Değişkenler - Tek kaynaktan yönetim
+        //const profilePicUrl = "KRM_PHOTO.jpg";
 		const profilePicUrl = "https://akincikerem.github.io/VCARD/KRM_PHOTO.jpg"; 
         const fullName = "KEREM AKINCI";
         const position = "MAINTENANCE PLANNING SENIOR ENGINEER";
         const companyName = "SUNEXPRESS AIRLINES";
-		const address = "Yenigöl Mah. Nergiz Sok.No: 84 , ANTALYA, Muratpasa 07230 TURKIYE";
+        const address = "Yenigöl Mah. Nergiz Sok.No: 84 , ANTALYA, Muratpasa 07230 TURKIYE";
         const phone = "+90 507 9950500";
         const email = "kerem.akinci@sunexpress.com";
         const Linkedin_link = "https://www.linkedin.com/in/kerem-akinci-05a87211b/?originalSubdomain=tr";
-		
-		const personalDesc = "Responsible for Base Maintenance Activities, Aircraft Maintenance Program, and AMOS Engineering Modules";
+        const personalDesc = "Responsible for Base Maintenance Activities, Aircraft Maintenance Program, and AMOS Engineering Modules";
+
+        // DOM Elementlerini Güncelleme
+        document.getElementById("profile-pic").src = profilePicUrl;
+        document.getElementById("full-name").textContent = fullName;
+        document.getElementById("position").textContent = position;
+        document.getElementById("company").textContent = companyName;
+        document.getElementById("address").textContent = address;
         
-        
-		// ###############################################################################
-		
-        // HTML öğelerine değişken değerlerini atama
-		document.getElementById("profile-pic").src = profilePicUrl;
-        document.getElementById("full-name").innerText = fullName;
-        document.getElementById("position").innerText = `${position}`;
-		document.getElementById("company").innerText = `${companyName}`;
-		document.getElementById("address").innerText = `${address}`;        
+        // İletişim Linkleri
         document.getElementById("phone-link").href = `tel:${phone}`;
-        document.getElementById("phone-link").innerText = `Phone`;
         document.getElementById("email-link").href = `mailto:${email}`;
-        document.getElementById("email-link").innerText = `Email`;
         document.getElementById("Linkedin-link").href = Linkedin_link;
-        document.getElementById("Linkedin-link").innerText = "Linkedin";
 
-        document.getElementById("email").innerText = email;        
-		document.getElementById("mobile-phone").innerText = phone; 
-		document.getElementById("personal-description").innerText = personalDesc;	
+        // İçerik Alanları
+        document.getElementById("email").textContent = email;
+        document.getElementById("mobile-phone").textContent = phone;
+        document.getElementById("personal-description").textContent = personalDesc;
 
-		
-        // Save contact fonksiyonu
-		document.getElementById('saveContact').addEventListener('click', function() {
-		const vCardData = `
-		BEGIN:VCARD
-		VERSION:3.0
-		FN:${fullName}
-		TEL:${phone}
-		EMAIL:${email}
-		ORG:${company}
-		TITLE:${position}
-		NOTE:${personalDesc} 
-		END:VCARD
-		`;
+        // vCard Oluşturma
+        document.getElementById('saveContact').addEventListener('click', function() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:${fullName}
+TEL:${phone}
+EMAIL:${email}
+ORG:${companyName}
+TITLE:${position}
+NOTE:${personalDesc}
+ADR:;;${address.replace(/,/g, ';')}
+END:VCARD`;
 
-		// vCard dosyasını indirilebilir hale getirme
-		const blob = new Blob([vCardData], { type: 'text/vcard' });
-		const url = URL.createObjectURL(blob);
-		const link = document.createElement('a');
-		link.href = url;
-		link.download = 'contact.vcf';  // vCard dosya adı
-		link.click();
-		URL.revokeObjectURL(url);  // Belleği temizle
-});
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${fullName.replace(' ', '_')}.vcf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        });
     </script>
 
 </body>
